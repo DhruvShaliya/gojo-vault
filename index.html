@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GOJO SATORU // DROP 07X</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: radial-gradient(ellipse at center, #000000 0%, #020a12 100%);
+      color: #0ff;
+      font-family: 'Orbitron', sans-serif;
+      overflow: hidden;
+      scroll-behavior: smooth;
+    }
+    .intro-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+      opacity: 1;
+      animation: intro-fade 4s ease-in-out forwards;
+    }
+    .intro-text {
+      font-size: 2rem;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #0ff;
+      animation: typeIn 2s steps(25, end), blink 0.75s step-end infinite;
+    }
+    @keyframes intro-fade {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; z-index: -1; }
+    }
+    @keyframes typeIn {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    .vault-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      z-index: 10;
+      position: relative;
+      padding: 1rem;
+      transition: all 1s ease-in-out;
+    }
+    .scanlines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: repeating-linear-gradient(to bottom, rgba(0,255,255,0.03) 0px, transparent 3px, rgba(0,255,255,0.03) 6px);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.ibb.co/2M9Q5xX/particles.gif') center center / cover no-repeat;
+      opacity: 0.03;
+      z-index: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    .glow-title {
+      font-size: 2.6rem;
+      color: #00f0ff;
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #0ff;
+      animation: glitch-flicker 2s infinite;
+    }
+    .glitch-character {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ff00d4;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      animation: glitch 1.5s infinite alternate;
+    }
+    .character-art {
+      width: 360px;
+      height: 500px;
+      background: url('https://i.ibb.co/JkNLJzF/gojo-silhouette.png') center/contain no-repeat;
+      filter: drop-shadow(0 0 50px #00f0ff);
+      animation: glow-loop 6s infinite ease-in-out;
+      transition: all 1s ease;
+    }
+    .panel {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: rgba(0,255,255,0.05);
+      border: 1px solid #0ff;
+      border-radius: 16px;
+      max-width: 600px;
+      box-shadow: 0 0 40px rgba(0,255,255,0.2);
+      z-index: 5;
+      transition: all 0.6s ease-in-out;
+    }
+    .stat {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.2rem;
+      margin: 0.8rem 0;
+      letter-spacing: 1.5px;
+    }
+    .access-key {
+      margin-top: 1rem;
+      font-size: 1.4rem;
+      padding: 0.9rem 1.6rem;
+      background: #001c25;
+      border: 1px solid #00f0ff;
+      border-radius: 12px;
+      letter-spacing: 4px;
+      color: #0ff;
+      animation: pulse-glow 3s infinite ease-in-out;
+    }
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 2.2rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #00f0ff, #ff00d4);
+      color: #000;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #00f0ff, inset 0 0 10px #0ff;
+      transition: all 0.4s ease;
+    }
+    .btn:hover {
+      background: #fff;
+      transform: scale(1.07);
+    }
+    @keyframes glitch-flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    @keyframes glitch {
+      0% { transform: translate(0); text-shadow: 1px 0 #ff00d4; }
+      25% { transform: translateX(2px); text-shadow: -2px 0 #00f0ff; }
+      50% { transform: translateX(-2px); text-shadow: 2px 0 #ff00d4; }
+      75% { transform: translateX(1px); text-shadow: -1px 0 #00f0ff; }
+      100% { transform: translate(0); text-shadow: 1px 0 #ff00d4; }
+    }
+    @keyframes glow-loop {
+      0%, 100% { filter: drop-shadow(0 0 30px #0ff); }
+      50% { filter: drop-shadow(0 0 60px #00f0ff); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 15px #0ff inset; }
+      50% { box-shadow: 0 0 35px #0ff inset; }
+    }
+  #bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.2;
+  }
+</style>
+</head>
+<body>
+  <div class="intro-screen">
+    <div class="intro-text" style="color:#0ff; font-family:'Share Tech Mono';">
+      AUTHENTICATING... ACCESS GRANTED
+    </div>
+  </div>
+  <video autoplay muted loop playsinline id="bg-video">
+  <source src="gojo.mp4" type="video/mp4">
+</video>
+
+<div class="scanlines"></div>
+  <div class="vault-container">
+    <div class="glow-title">ACCESS GRANTED: DROP 07X</div>
+    <div class="glitch-character">GOJO SATORU // CURSED VAULT</div>
+    <div class="character-art">
+  <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+    <source src="https://files.catbox.moe/0v9y7n.mp4" type="video/mp4">
+  </video>
+</div>
+    <div class="panel">
+      <p class="glow">USER ID: DSX-002</p>
+      <p class="glow">DROPS CLAIMED: 01 / 24</p>
+      <p class="glow">PROTOCOL ENDS IN: <span id="timer">03:17:56</span></p>
+      <div class="access-key" id="drop-code">GOJOX100</div>
+      <div class="action-buttons">
+        <button class="btn" onclick="copyDropCode()">⚡ USE CODE</button>
+        <button class="btn" onclick="window.location.href='https://otakudripx.blinkstore.ai/'">🧬 CLAIM ANOTHER DRIP</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    let countdown = document.getElementById("timer");
+    let seconds = 11876;
+    setInterval(() => {
+      seconds--;
+      let h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+      let m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+      let s = String(seconds % 60).padStart(2, '0');
+      countdown.textContent = ${h}:${m}:${s};
+    }, 1000);
+  function copyDropCode() {
+  const code = document.getElementById("drop-code").textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    alert("Code copied to clipboard: " + code);
+  });
+}
+</script>
+</body>
+</html>
